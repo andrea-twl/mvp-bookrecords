@@ -1,0 +1,54 @@
+// Desktop small
+@mixin dtSm {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+// Ipad Pro
+@mixin ipPr {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+// Ipad
+@mixin ip {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+
+// Ipad Small
+@mixin ipSm {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+// Mobile
+@mixin mb {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+// Mobile small
+@mixin mbSm {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
