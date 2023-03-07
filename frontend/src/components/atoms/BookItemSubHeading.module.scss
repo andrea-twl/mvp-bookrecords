@@ -1,0 +1,8 @@
+@import "../../styles/scss/global.scss";
+
+.text {
+  font-family: $inter-medium;
+  font-size: 14px;
+  text-overflow: wrap;
+  color: $color-text;
+}

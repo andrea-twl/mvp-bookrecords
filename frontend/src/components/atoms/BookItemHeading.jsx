@@ -1,11 +1,11 @@
 import styles from "./BookItemHeading.module.scss";
 
-const BookItemHeading = ({ text }) => {
+const BookItemHeading = ({ text, children }) => {
   return (
-    <p className={`${styles.text}`}>
+    <div className={`${styles.text}`}>
       {text}
       {children}
-    </p>
+    </div>
   );
 };
 
