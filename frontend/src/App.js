@@ -4,11 +4,18 @@ import BookItemHeading from "./components/atoms/BookItemHeading";
 import BookItemSubHeading from "./components/atoms/BookItemSubHeading";
 import CountryBtnCopy from "./components/atoms/CountryBtnCopy";
 import CustomerCopy from "./components/atoms/CustomerCopy";
+import BookItem from "./components/molecules/BookItem";
 
 function App() {
   return (
     <div className="App">
-      <BookItemHeading text={"hey"} />
+      <BookItem name={"Coraline"} author={"Neil Gaiman"} id={1} />
+      <BookItem
+        name={"Guards! Guards! Guards!"}
+        author={"Terry Pratchet"}
+        id={1}
+      />
+
       <BookItemSubHeading text={"hi"} />
       <CountryBtnCopy text={"hello"} />
       <CustomerCopy text={"ho"} />

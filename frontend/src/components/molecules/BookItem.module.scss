@@ -1,0 +1,42 @@
+@import "../../styles/scss/global.scss";
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: $color-primary;
+  min-height: 108px;
+  width: 409px;
+  box-sizing: border-box;
+  border-radius: $br-primary;
+  box-shadow: $bs-primary;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+
+  &_id {
+    margin-left: 28px;
+    width: 52px;
+    text-align: left;
+  }
+
+  &_name {
+    width: 259px;
+    height: 100%;
+    margin: 20px 0;
+    text-align: left;
+  }
+
+  &_author {
+    position: absolute;
+    bottom: 13px;
+    right: 31px;
+  }
+}
+
+.book-toggle {
+  width: 75px;
+  height: 75px;
+  margin-right: 5px;
+  @include flexCenter;
+}
