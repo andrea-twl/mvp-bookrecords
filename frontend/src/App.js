@@ -5,10 +5,11 @@ import BookItemSubHeading from "./components/atoms/BookItemSubHeading";
 import CountryBtnCopy from "./components/atoms/ActionBtnCopy";
 import CustomerCopy from "./components/atoms/CustomerCopy";
 import BookItem from "./components/molecules/BookItem";
-import CountryBtn from "./components/molecules/ActionBtn";
+import ActionBtn from "./components/atoms/ActionBtn";
 import Customer from "./components/atoms/Customer";
 import BookList from "./components/organisms/BookList";
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState([
@@ -23,10 +24,34 @@ function App() {
       customers: ["Andrea Tan", "Keane Tan", "Matthew Tham"],
     },
   ]);
+
+  const handleClick = () => {
+    console.log("hai");
+    getTop3ReadBook();
+  };
+
+  const getTop3ReadBook = async () => {
+    const res = await axios
+      .get("http://localhost:8080" + "/getTop3ReadBook", {
+        params: { country_code: "SG" },
+      })
+      .catch((err) => {
+        if (err.response.status === 400) {
+          alert(err);
+        } else {
+          alert("Please try again later");
+          console.log("error: ", err);
+        }
+      });
+    if (res && res.status === 200) {
+      setData(res.data);
+      console.log(data);
+    }
+  };
+
   return (
     <div className="App">
-      <CountryBtn countryCode={"SG"} />
-
+      <ActionBtn countryCode={"SG"} onClick={handleClick} />
       <BookList data={data} />
     </div>
   );

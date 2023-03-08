@@ -1,4 +1,3 @@
-import ActionBtnCopy from "./ActionBtnCopy";
 import CustomerCopy from "./CustomerCopy";
 import styles from "./Customer.module.scss";
 
