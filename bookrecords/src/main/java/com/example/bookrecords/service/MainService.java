@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,9 +38,11 @@ public class MainService {
                 break;
             case "US":
                 countryId = 3;
+                break;
             default:
-                // should not happen
-                countryId = 0;
+                ObjectNode objectNode = mapper.createObjectNode();
+                objectNode.put("message", "invalid parameter");
+                return new ResponseEntity<>(objectNode, HttpStatus.BAD_REQUEST);
         }
         ArrayList<ObjectNode> nodeList = new ArrayList<>(3);
         List<List<Object>> topBooks = booksService.getTop3ReadBook();

@@ -13,23 +13,14 @@ import axios from "axios";
 
 function App() {
   const [countryCode, setCountryCode] = useState("SG");
-  const [data, setData] = useState([
-    {
-      name: "Mort",
-      author: "Terry Pratchet",
-      customers: ["Andrea Tan", "Keane Tan", "Matthew Tham"],
-    },
-    {
-      name: "Guards! Guards!",
-      author: "Terry Pratchet",
-      customers: ["Andrea Tan", "Keane Tan", "Matthew Tham"],
-    },
-  ]);
+  const [data, setData] = useState();
+
+  // useEffect(() => {
+  //   get
+  // }, []);
 
   const handleClick = () => {
-    console.log("hai");
     getRandomCountry();
-    //getTop3ReadBook();
   };
 
   useEffect(() => {
@@ -40,13 +31,8 @@ function App() {
     const res = await axios
       .get("http://localhost:8080" + "/getRandomCountry")
       .catch((err) => {
-        console.log(err.response.data.message);
-        // if (err.response.status === 400) {
-        //   alert(err);
-        // } else {
-        //   alert("Please try again later");
-        //   console.log("error: ", err);
-        // }
+        alert(err.response.data.message);
+        console.log(err);
       });
     if (res && res.status === 200) {
       setCountryCode(res.data);
@@ -60,12 +46,8 @@ function App() {
         params: { country_code: countryCode },
       })
       .catch((err) => {
-        if (err.response.status === 400) {
-          alert(err);
-        } else {
-          alert("Please try again later");
-          console.log("error: ", err);
-        }
+        alert(err.response.data.message);
+        console.log(err);
       });
     if (res && res.status === 200) {
       setData(res.data);
