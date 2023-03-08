@@ -1,0 +1,10 @@
+@import "../../styles/scss/global.scss";
+
+.customer {
+  @include flexCenter;
+  background-color: $color-secondary;
+  border-radius: $br-primary;
+  box-shadow: $bs-primary;
+  height: 79px;
+  width: 331px;
+}
