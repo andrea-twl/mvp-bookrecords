@@ -21,7 +21,7 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   &__id {
     margin-left: 28px;
     width: 52px;
@@ -46,5 +46,11 @@
     height: 75px;
     margin-right: 5px;
     @include flexCenter;
+    transition: 0.3s;
+
+    &:hover {
+      filter: saturate(150%);
+      cursor: pointer;
+    }
   }
 }
