@@ -1,12 +1,5 @@
-import logo from "./logo.svg";
 import "./App.scss";
-import BookItemHeading from "./components/atoms/BookItemHeading";
-import BookItemSubHeading from "./components/atoms/BookItemSubHeading";
-import CountryBtnCopy from "./components/atoms/ActionBtnCopy";
-import CustomerCopy from "./components/atoms/CustomerCopy";
-import BookItem from "./components/molecules/BookItem";
 import ActionBtn from "./components/atoms/ActionBtn";
-import Customer from "./components/atoms/Customer";
 import BookList from "./components/organisms/BookList";
 import { useEffect, useState } from "react";
 import axios from "axios";

@@ -1,8 +1,5 @@
 import { useState } from "react";
-import BookToggleIcon from "../../assets/icons/BookToggleIcon";
 import ActionBtnCopy from "../atoms/ActionBtnCopy";
-import BookItemHeading from "../atoms/BookItemHeading";
-import BookItemSubHeading from "../atoms/BookItemSubHeading";
 import BookItem from "../molecules/BookItem";
 import styles from "./BookList.module.scss";
 
