@@ -5,33 +5,33 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-public class Books {
+public class Authors {
     @Id
-    @SequenceGenerator(name = "books_id_seq", sequenceName = "books_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "authors_id_seq", sequenceName = "authors_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String name;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public Books(Integer id, String name, Timestamp createdAt, Timestamp updatedAt) {
+    public Authors(Integer id, String name, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Books(String name, Timestamp createdAt, Timestamp updatedAt) {
+    public Authors(String name, Timestamp createdAt, Timestamp updatedAt) {
         this.name = name;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Books(String name) {
+    public Authors(String name) {
         this.name = name;
     }
 
-    public Books() {
+    public Authors() {
     }
 
     public Integer getId() {

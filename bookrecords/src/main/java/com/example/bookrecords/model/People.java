@@ -1,33 +1,41 @@
 package com.example.bookrecords.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 @Entity
 public class People {
     @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "people_id_seq", sequenceName = "people_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String name;
-    // @Column(name = "createdAt")
-    private LocalDate createdAt;
-    // @Column(name = "updatedAt")
-    private LocalDate updatedAt;
+    private Long countryId;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    public People(Integer id, String name, LocalDate createdAt, LocalDate updatedAt) {
+    public People(Integer id, String name, Long countryId, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
+        this.countryId = countryId;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public People() {
+    public People(String name, Long countryId, Timestamp createdAt, Timestamp updatedAt) {
+        this.name = name;
+        this.countryId = countryId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-    public People(String name) {
+    public People(String name, Long countryId) {
         this.name = name;
+        this.countryId = countryId;
+    }
+
+    public People() {
     }
 
     public Integer getId() {
@@ -46,19 +54,27 @@ public class People {
         this.name = name;
     }
 
-    public LocalDate getCreatedAt() {
+    public Long getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
+    }
+
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
