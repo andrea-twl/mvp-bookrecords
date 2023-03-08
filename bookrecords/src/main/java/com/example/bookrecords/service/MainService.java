@@ -41,17 +41,18 @@ public class MainService {
                 countryId = 0;
         }
         ArrayList<ObjectNode> nodeList = new ArrayList<>(3);
-        List<List<String>> topBooks = booksService.getTop3ReadBook(countryId);
-        List<String> topBorrowers = peopleService.getTop3People(countryId);
-
-        for (List<String> book : topBooks) {
+        List<List<Object>> topBooks = booksService.getTop3ReadBook();
+        //List<String> topBorrowers = peopleService.getTop3People(countryId);
+        for (List<Object> book : topBooks) {
             ObjectNode objectNode = mapper.createObjectNode();
-            objectNode.put("name", book.get(0));
-            objectNode.put("author", book.get(1));
+            objectNode.put("name", (String) book.get(0));
+            objectNode.put("author", (String) book.get(2));
+            List<String> topBorrowers = peopleService.getTop3People(countryId, (Integer) book.get(1));
             ArrayNode borrowers = mapper.valueToTree(topBorrowers);
             objectNode.putArray("borrower").addAll(borrowers);
             nodeList.add(objectNode);
         }
+        //return ResponseEntity.ok(topBooks);
         return  ResponseEntity.ok(nodeList);
     }
 }

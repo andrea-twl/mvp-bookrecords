@@ -16,7 +16,7 @@ public class PeopleService {
         this.peopleRepository = peopleRepository;
     }
 
-    public List<String> getTop3People(int countryId) {
-        return this.peopleRepository.getTop3People(countryId);
+    public List<String> getTop3People(int countryId, int bookId) {
+        return this.peopleRepository.getTop3People(countryId, bookId);
     }
 }

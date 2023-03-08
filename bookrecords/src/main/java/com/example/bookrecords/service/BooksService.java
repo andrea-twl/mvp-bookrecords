@@ -16,7 +16,7 @@ public class BooksService {
         this.booksRepository = booksRepository;
     }
 
-    public List<List<String>> getTop3ReadBook(int countryId) {
-        return this.booksRepository.getTop3ReadBook(countryId);
+    public List<List<Object>> getTop3ReadBook() {
+        return this.booksRepository.getTop3ReadBook();
     }
 }

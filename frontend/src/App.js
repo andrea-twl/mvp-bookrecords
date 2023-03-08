@@ -6,6 +6,7 @@ import CountryBtnCopy from "./components/atoms/ActionBtnCopy";
 import CustomerCopy from "./components/atoms/CustomerCopy";
 import BookItem from "./components/molecules/BookItem";
 import CountryBtn from "./components/molecules/ActionBtn";
+import Customer from "./components/molecules/Customer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         id={1}
       />
       <CountryBtn countryCode={"SG"} />
+      <Customer name={"Rhett McLaughlin"} />
       <BookItemSubHeading text={"hi"} />
       <CountryBtnCopy text={"hello"} />
       <CustomerCopy text={"ho"} />
