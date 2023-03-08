@@ -2,6 +2,13 @@
 
 .book {
   &__item {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  &__details {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -13,8 +20,8 @@
     box-shadow: $bs-primary;
     position: relative;
     overflow: hidden;
-    height: auto;
   }
+  
   &__id {
     margin-left: 28px;
     width: 52px;

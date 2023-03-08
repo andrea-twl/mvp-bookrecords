@@ -1,0 +1,13 @@
+@import "../../styles/scss/global.scss";
+
+.book {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    gap: 33px;
+    width: 500px;
+    padding: 17px 0 28px 0;
+    height: auto;
+  }
+}
