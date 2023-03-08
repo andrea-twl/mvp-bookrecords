@@ -2,20 +2,29 @@ package com.example.bookrecords.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 
 @Entity
 public class People {
     @Id
     @SequenceGenerator(name = "people_id_seq", sequenceName = "people_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "people_id_seq")
+    @Column(nullable = false)
     private Integer id;
-    private String name;
-    private Long countryId;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 
-    public People(Integer id, String name, Long countryId, Timestamp createdAt, Timestamp updatedAt) {
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private Long countryId;
+
+    @Column(nullable = false)
+    private ZonedDateTime createdAt;
+
+    @Column(nullable = false)
+    private ZonedDateTime updatedAt;
+
+    public People(Integer id, String name, Long countryId, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.countryId = countryId;
@@ -23,7 +32,7 @@ public class People {
         this.updatedAt = updatedAt;
     }
 
-    public People(String name, Long countryId, Timestamp createdAt, Timestamp updatedAt) {
+    public People(String name, Long countryId, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.name = name;
         this.countryId = countryId;
         this.createdAt = createdAt;
@@ -62,19 +71,19 @@ public class People {
         this.countryId = countryId;
     }
 
-    public Timestamp getCreatedAt() {
+    public ZonedDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(ZonedDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
+    public ZonedDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(ZonedDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

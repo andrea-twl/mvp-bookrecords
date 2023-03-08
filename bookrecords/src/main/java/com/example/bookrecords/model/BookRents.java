@@ -1,27 +1,34 @@
 package com.example.bookrecords.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 
 @Entity
 public class BookRents {
     @Id
+    @Column(nullable = false)
     private Integer personId;
     @Id
+    @Column(nullable = false)
     private Integer bookId;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 
-    public BookRents(Integer personId, Integer bookId, Timestamp createdAt, Timestamp updatedAt) {
+    @Column(nullable = false)
+    private ZonedDateTime createdAt;
+
+    @Column(nullable = false)
+    private ZonedDateTime updatedAt;
+
+    public BookRents(Integer personId, Integer bookId, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.personId = personId;
         this.bookId = bookId;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public BookRents(Integer bookId, Timestamp createdAt, Timestamp updatedAt) {
+    public BookRents(Integer bookId, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.bookId = bookId;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -47,19 +54,19 @@ public class BookRents {
         this.bookId = bookId;
     }
 
-    public Timestamp getCreatedAt() {
+    public ZonedDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(ZonedDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
+    public ZonedDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(ZonedDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

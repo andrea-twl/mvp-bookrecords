@@ -12,7 +12,6 @@ public class BookRentsPkey implements Serializable {
     private Integer bookId;
     private Integer personId;
 
-
     public BookRentsPkey(Integer bookId, Integer authorId) {
         this.bookId = bookId;
         this.personId = authorId;
