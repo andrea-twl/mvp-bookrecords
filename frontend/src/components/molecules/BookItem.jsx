@@ -31,18 +31,23 @@ const BookItem = ({ book, id, activeItem, setActiveItem }) => {
           <div className={styles["book__id"]}>
             <BookItemHeading text={id} />
           </div>
-          <div className={styles["book__name"]}>
-            <BookItemHeading text={book.name} />
-          </div>
+          {book.name && (
+            <div className={styles["book__name"]}>
+              <BookItemHeading text={book.name} />
+            </div>
+          )}
           <div className={styles["book-toggle"]} onClick={handleClick}>
             <BookToggleIcon />
           </div>
-          <div className={styles["book__author"]}>
-            <BookItemSubHeading text={"by " + book.author} />
-          </div>
+          {book.author && (
+            <div className={styles["book__author"]}>
+              <BookItemSubHeading text={"by " + book.author} />
+            </div>
+          )}
         </div>
         {toggle &&
-          book.customers.map((borrower) => (
+          book.borrower &&
+          book.borrower.map((borrower) => (
             <Customer className={"customer"} borrower={borrower} />
           ))}
       </div>

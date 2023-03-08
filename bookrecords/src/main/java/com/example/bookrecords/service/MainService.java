@@ -43,7 +43,7 @@ public class MainService {
         }
         ArrayList<ObjectNode> nodeList = new ArrayList<>(3);
         List<List<Object>> topBooks = booksService.getTop3ReadBook();
-        //List<String> topBorrowers = peopleService.getTop3People(countryId);
+        // List<String> topBorrowers = peopleService.getTop3People(countryId);
         for (List<Object> book : topBooks) {
             ObjectNode objectNode = mapper.createObjectNode();
             objectNode.put("name", (String) book.get(0));
@@ -53,7 +53,6 @@ public class MainService {
             objectNode.putArray("borrower").addAll(borrowers);
             nodeList.add(objectNode);
         }
-        //return ResponseEntity.ok(topBooks);
         return  ResponseEntity.ok(nodeList);
     }
 
