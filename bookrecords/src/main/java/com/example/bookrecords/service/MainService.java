@@ -64,8 +64,14 @@ public class MainService {
     }
 
     public ResponseEntity getRandomCountry() {
+        String[] countryNames = new String[]{"Singapore", "Malaysia", "United States"};
         String[] countryCodes = new String[]{"SG", "MY", "US"};
         int randomNum = ThreadLocalRandom.current().nextInt(0, 3);
-        return  ResponseEntity.ok(countryCodes[randomNum]);
+        ObjectNode outerNode = mapper.createObjectNode();
+        ObjectNode innerNode = mapper.createObjectNode();
+        innerNode.put("full_name", countryNames[randomNum]);
+        innerNode.put("country_code", countryCodes[randomNum]);
+        outerNode.put("country", innerNode);
+        return ResponseEntity.ok(outerNode);
     }
 }

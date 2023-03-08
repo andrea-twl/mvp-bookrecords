@@ -21,7 +21,6 @@ function App() {
 
   useEffect(() => {
     getTop3ReadBook();
-    console.log("hai");
   }, [countryCode]);
 
   const getRandomCountry = async () => {
@@ -32,7 +31,7 @@ function App() {
         // console.log(err);
       });
     if (res && res.status === 200) {
-      setCountryCode(res.data);
+      setCountryCode(res.data.country.country_code);
       // console.log(res.data);
     }
   };
