@@ -15,16 +15,13 @@ function App() {
   const [countryCode, setCountryCode] = useState("SG");
   const [data, setData] = useState();
 
-  // useEffect(() => {
-  //   get
-  // }, []);
-
   const handleClick = () => {
     getRandomCountry();
   };
 
   useEffect(() => {
     getTop3ReadBook();
+    console.log("hai");
   }, [countryCode]);
 
   const getRandomCountry = async () => {
@@ -32,11 +29,11 @@ function App() {
       .get("http://localhost:8080" + "/getRandomCountry")
       .catch((err) => {
         alert(err.response.data.message);
-        console.log(err);
+        // console.log(err);
       });
     if (res && res.status === 200) {
       setCountryCode(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     }
   };
 
@@ -47,11 +44,11 @@ function App() {
       })
       .catch((err) => {
         alert(err.response.data.message);
-        console.log(err);
+        // console.log(err);
       });
     if (res && res.status === 200) {
       setData(res.data);
-      console.log(data);
+      // console.log(data);
     }
   };
 

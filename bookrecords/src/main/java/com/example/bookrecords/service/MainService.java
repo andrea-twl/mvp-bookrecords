@@ -46,12 +46,16 @@ public class MainService {
         }
         ArrayList<ObjectNode> nodeList = new ArrayList<>(3);
         List<List<Object>> topBooks = booksService.getTop3ReadBook();
-        // List<String> topBorrowers = peopleService.getTop3People(countryId);
+        if (topBooks.isEmpty()) {
+            ObjectNode objectNode = mapper.createObjectNode();
+            objectNode.put("message", "no results");
+            return new ResponseEntity<>(objectNode, HttpStatus.NOT_FOUND);
+        }
         for (List<Object> book : topBooks) {
             ObjectNode objectNode = mapper.createObjectNode();
+            List<String> topBorrowers = peopleService.getTop3People(countryId, (Integer) book.get(1));
             objectNode.put("name", (String) book.get(0));
             objectNode.put("author", (String) book.get(2));
-            List<String> topBorrowers = peopleService.getTop3People(countryId, (Integer) book.get(1));
             ArrayNode borrowers = mapper.valueToTree(topBorrowers);
             objectNode.putArray("borrower").addAll(borrowers);
             nodeList.add(objectNode);
@@ -61,7 +65,7 @@ public class MainService {
 
     public ResponseEntity getRandomCountry() {
         String[] countryCodes = new String[]{"SG", "MY", "US"};
-        int randomNum = ThreadLocalRandom.current().nextInt(0, 2 + 1);
+        int randomNum = ThreadLocalRandom.current().nextInt(0, 3);
         return  ResponseEntity.ok(countryCodes[randomNum]);
     }
 }
