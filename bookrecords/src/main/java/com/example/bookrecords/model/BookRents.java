@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 
 import java.time.ZonedDateTime;
 
-@Entity
+// @Entity
 public class BookRents {
     @Id
     @Column(nullable = false)

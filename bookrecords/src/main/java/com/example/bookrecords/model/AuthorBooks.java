@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.ZonedDateTime;
 
-@Entity
+// @Entity
 @IdClass(AuthorBooksPkey.class)
 public class AuthorBooks {
     @Id

@@ -3,6 +3,7 @@ package com.example.bookrecords.model;
 import jakarta.persistence.*;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 public class Authors {
@@ -20,6 +21,13 @@ public class Authors {
 
     @Column(nullable = false)
     private ZonedDateTime updatedAt;
+
+    @ManyToMany
+    @JoinTable(
+            name = "author_books",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
+    List<Books> booksAuthored;
 
     public Authors(Integer id, String name, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.id = id;

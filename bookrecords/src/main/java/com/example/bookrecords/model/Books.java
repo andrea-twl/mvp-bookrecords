@@ -3,6 +3,7 @@ package com.example.bookrecords.model;
 import jakarta.persistence.*;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 public class Books {
@@ -20,6 +21,12 @@ public class Books {
 
     @Column(nullable = false)
     private ZonedDateTime updatedAt;
+
+    @ManyToMany(mappedBy = "booksAuthored")
+    List<Authors> authors;
+
+    @ManyToMany(mappedBy = "booksRented")
+    List<People> renters;
 
     public Books(Integer id, String name, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.id = id;
