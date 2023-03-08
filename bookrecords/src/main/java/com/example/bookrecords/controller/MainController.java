@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
-@RequestMapping("/getTop3ReadBook")
 public class MainController {
 
     private final MainService mainService;
@@ -17,8 +16,15 @@ public class MainController {
         this.mainService = mainService;
     }
 
+    @RequestMapping("/getTop3ReadBook")
     @GetMapping
     public ResponseEntity getTop3ReadBook(@RequestParam("country_code") String countryCode) {
         return mainService.getTop3ReadBook(countryCode);
+    }
+
+    @RequestMapping("/getRandomCountry")
+    @GetMapping
+    public ResponseEntity getRandomCountry() {
+        return mainService.getRandomCountry();
     }
 }

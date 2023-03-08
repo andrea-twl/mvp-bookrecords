@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class MainService {
@@ -54,5 +55,11 @@ public class MainService {
         }
         //return ResponseEntity.ok(topBooks);
         return  ResponseEntity.ok(nodeList);
+    }
+
+    public ResponseEntity getRandomCountry() {
+        String[] countryCodes = new String[]{"SG", "MY", "US"};
+        int randomNum = ThreadLocalRandom.current().nextInt(0, 2 + 1);
+        return  ResponseEntity.ok(countryCodes[randomNum]);
     }
 }
