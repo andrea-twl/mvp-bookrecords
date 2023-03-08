@@ -18,7 +18,7 @@ public class MainController {
 
     @RequestMapping("/getTop3ReadBook")
     @GetMapping
-    public ResponseEntity getTop3ReadBook(@RequestParam("country_code") String countryCode) {
+    public ResponseEntity getTop3ReadBook(@RequestParam(value = "country_code", defaultValue = "SG") String countryCode) {
         return mainService.getTop3ReadBook(countryCode);
     }
 

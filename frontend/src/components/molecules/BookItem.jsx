@@ -5,11 +5,10 @@ import BookItemSubHeading from "../atoms/BookItemSubHeading";
 import Customer from "../atoms/Customer";
 import styles from "./BookItem.module.scss";
 
-const BookItem = ({ book, id, activeItem, setActiveItem }) => {
+const BookItem = ({ book, index, activeItem, setActiveItem }) => {
   const [toggle, setToggle] = useState(false);
-
   useEffect(() => {
-    if (activeItem != id) {
+    if (activeItem != index) {
       setToggle(false);
     }
   }, [activeItem]);
@@ -19,17 +18,17 @@ const BookItem = ({ book, id, activeItem, setActiveItem }) => {
       setActiveItem(null);
       setToggle(false);
     } else {
-      setActiveItem(id);
+      setActiveItem(index);
       setToggle(true);
     }
   };
 
   return (
     book && (
-      <div className={`${styles["book__item"]}`} id={`book-item-${id}`}>
+      <div className={`${styles["book__item"]}`} id={`book-item-${index}`}>
         <div className={styles["book__details"]}>
           <div className={styles["book__id"]}>
-            <BookItemHeading text={id} />
+            <BookItemHeading text={index} />
           </div>
           {book.name && (
             <div className={styles["book__name"]}>
@@ -47,8 +46,8 @@ const BookItem = ({ book, id, activeItem, setActiveItem }) => {
         </div>
         {toggle &&
           book.borrower &&
-          book.borrower.map((borrower) => (
-            <Customer className={"customer"} borrower={borrower} />
+          book.borrower.map((borrower, index) => (
+            <Customer key={index} className={"customer"} borrower={borrower} />
           ))}
       </div>
     )

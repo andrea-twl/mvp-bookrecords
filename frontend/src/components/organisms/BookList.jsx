@@ -9,10 +9,11 @@ const BookList = ({ data }) => {
     <>
       {data ? (
         <div className={`${styles["book__list"]}`} id={"container"}>
-          {data.map((book, id) => (
+          {data.map((book, index) => (
             <BookItem
+              key={index}
+              index={index + 1}
               book={book}
-              id={id + 1}
               activeItem={activeItem}
               setActiveItem={setActiveItem}
             />
