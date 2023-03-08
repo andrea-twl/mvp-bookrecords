@@ -1,7 +1,7 @@
 @import "../../styles/scss/global.scss";
 
 .book {
-  &-item {
+  &__item {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -15,20 +15,20 @@
     overflow: hidden;
     height: auto;
   }
-  &-id {
+  &__id {
     margin-left: 28px;
     width: 52px;
     text-align: left;
   }
 
-  &-name {
+  &__name {
     width: 259px;
     height: 100%;
     margin: 20px 0;
     text-align: left;
   }
 
-  &-author {
+  &__author {
     position: absolute;
     bottom: 13px;
     right: 31px;

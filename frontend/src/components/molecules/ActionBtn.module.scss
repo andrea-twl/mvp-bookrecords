@@ -1,0 +1,14 @@
+@import "../../styles/scss/global.scss";
+
+.actionBtn {
+  &__container {
+    @include flexCenter;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: $color-primary;
+    border: 1.01px solid $color-accent;
+    height: 47px;
+    width: 173px;
+  }
+}

@@ -2,9 +2,10 @@ import logo from "./logo.svg";
 import "./App.css";
 import BookItemHeading from "./components/atoms/BookItemHeading";
 import BookItemSubHeading from "./components/atoms/BookItemSubHeading";
-import CountryBtnCopy from "./components/atoms/CountryBtnCopy";
+import CountryBtnCopy from "./components/atoms/ActionBtnCopy";
 import CustomerCopy from "./components/atoms/CustomerCopy";
 import BookItem from "./components/molecules/BookItem";
+import CountryBtn from "./components/molecules/ActionBtn";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         author={"Terry Pratchet"}
         id={1}
       />
-
+      <CountryBtn countryCode={"SG"} />
       <BookItemSubHeading text={"hi"} />
       <CountryBtnCopy text={"hello"} />
       <CustomerCopy text={"ho"} />
