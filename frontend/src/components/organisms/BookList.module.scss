@@ -11,4 +11,15 @@
     padding: 17px 0 28px 0;
     height: auto;
   }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 500px;
+    height: 70.8px;
+  }
 }

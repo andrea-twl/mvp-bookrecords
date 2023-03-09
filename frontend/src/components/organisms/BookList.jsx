@@ -20,7 +20,11 @@ const BookList = ({ data }) => {
           ))}
         </div>
       ) : (
-        <div id="error-message" data-value={"No data found"}>
+        <div
+          className={`${styles["book__error"]}`}
+          id="error-message"
+          data-value={"No data found"}
+        >
           <ActionBtnCopy text="No data found" />
         </div>
       )}

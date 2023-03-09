@@ -18,8 +18,12 @@ const BookItem = ({ book, index, activeItem, setActiveItem }) => {
       setActiveItem(null);
       setToggle(false);
     } else {
-      setActiveItem(index);
-      setToggle(true);
+      if (book.borrower.length == 0) {
+        alert("No results found");
+      } else {
+        setActiveItem(index);
+        setToggle(true);
+      }
     }
   };
 
