@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface BooksRepository extends JpaRepository<Books, Integer> {
-    @Query(value = "SELECT b.name, a.name " +
+    @Query(value = "SELECT b.name, b.id, a.name " +
             "FROM books b INNER JOIN author_books ab ON b.id = ab.book_id " +
             "INNER JOIN authors a ON ab.author_id = a.id " +
             "INNER JOIN " +
@@ -23,7 +23,7 @@ public interface BooksRepository extends JpaRepository<Books, Integer> {
             "LIMIT 3",
             nativeQuery=true
     )
-    public List<List<String>> getTop3ReadBookLocally(@Param("country") int countryId);
+    public List<List<Object>> getTop3ReadBookLocally(@Param("country") int countryId);
 
     @Query(value = "SELECT b.name, b.id, a.name " +
             "FROM books b INNER JOIN author_books ab ON b.id = ab.book_id " +

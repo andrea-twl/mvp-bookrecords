@@ -10,16 +10,6 @@ import java.util.List;
 
 @Repository
 public interface PeopleRepository extends JpaRepository<People, Integer> {
-    @Query(value = "SELECT p.name " +
-            "FROM books b INNER JOIN book_rents br ON b.id = br.book_id " +
-                "INNER JOIN people p ON p.id = br.person_id " +
-            "WHERE p.country_id = :country " +
-            "GROUP BY p.id " +
-            "ORDER BY COUNT(p) DESC " +
-            "LIMIT 3",
-            nativeQuery=true
-    )
-    public List<String> getTop3PeopleAcrossBooks(@Param("country") int countryId);
 
     @Query(value = "SELECT p.name " +
             "FROM books b INNER JOIN book_rents br ON b.id = br.book_id " +

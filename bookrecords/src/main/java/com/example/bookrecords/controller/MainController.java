@@ -20,6 +20,7 @@ public class MainController {
     @GetMapping
     public ResponseEntity getTop3ReadBook(@RequestParam(value = "country_code", defaultValue = "SG") String countryCode) {
         return mainService.getTop3ReadBook(countryCode);
+        // return mainService.getTop3ReadBookLocally(countryCode);
     }
 
     @RequestMapping("/getRandomCountry")

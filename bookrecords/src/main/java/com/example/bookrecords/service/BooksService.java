@@ -19,4 +19,8 @@ public class BooksService {
     public List<List<Object>> getTop3ReadBook() {
         return this.booksRepository.getTop3ReadBook();
     }
+
+    public List<List<Object>> getTop3ReadBookLocally(int countryId) {
+        return this.booksRepository.getTop3ReadBookLocally(countryId);
+    }
 }
