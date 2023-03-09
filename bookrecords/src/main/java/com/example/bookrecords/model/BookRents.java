@@ -9,10 +9,10 @@ import java.time.ZonedDateTime;
 // @Entity
 public class BookRents {
     @Id
-    @Column(nullable = false)
+    @Column(name = "person_id", nullable = false)
     private Integer personId;
     @Id
-    @Column(nullable = false)
+    @Column(name = "book_id", nullable = false)
     private Integer bookId;
 
     @Column(nullable = false)

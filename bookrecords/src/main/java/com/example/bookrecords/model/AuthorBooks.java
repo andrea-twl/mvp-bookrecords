@@ -8,11 +8,11 @@ import java.time.ZonedDateTime;
 @IdClass(AuthorBooksPkey.class)
 public class AuthorBooks {
     @Id
-    @Column(nullable = false)
+    @Column(name = "author_id", nullable = false)
     private Integer authorId;
 
     @Id
-    @Column(nullable = false)
+    @Column(name = "book_id", nullable = false)
     private Integer bookId;
 
     @Column(nullable = false)
