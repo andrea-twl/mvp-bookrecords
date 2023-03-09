@@ -23,9 +23,6 @@ public class Books {
     @Column(nullable = false)
     private ZonedDateTime updatedAt;
 
-//    @ManyToMany(mappedBy = "booksAuthored")
-//    List<Authors> authors;
-
     @OneToMany(mappedBy = "books")
     private List<AuthorBooks> authorBooks = new ArrayList<>();
 

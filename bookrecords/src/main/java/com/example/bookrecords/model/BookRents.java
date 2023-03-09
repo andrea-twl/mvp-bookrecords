@@ -10,11 +10,11 @@ public class BookRents {
     private BookRentsId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("personId")
+    @MapsId("person_id")
     private People people;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("bookId")
+    @MapsId("book_id")
     private Books books;
 
     @Column(nullable = false)

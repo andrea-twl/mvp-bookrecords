@@ -9,11 +9,11 @@ public class AuthorBooks {
     @EmbeddedId
     private AuthorBooksId id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("authorId")
+    @MapsId("author_id")
     private Authors authors;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("bookId")
+    @MapsId("book_id")
     private Books books;
 
     @Column(nullable = false)

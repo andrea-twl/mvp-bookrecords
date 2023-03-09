@@ -8,10 +8,8 @@ import java.util.Objects;
 @Embeddable
 public class AuthorBooksId implements Serializable {
 
-    // @Column(name = "person_id", nullable = false)
     private Integer authorId;
 
-    // @Column(name = "book_id", nullable = false)
     private Integer bookId;
 
     public AuthorBooksId(Integer authorId, Integer bookId) {
