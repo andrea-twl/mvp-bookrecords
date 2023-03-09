@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 @Embeddable
@@ -15,9 +16,12 @@ public class BookRentsId implements Serializable {
 
     private Integer bookId;
 
-    public BookRentsId(Integer personId, Integer bookId) {
+    private ZonedDateTime createdAt;
+
+    public BookRentsId(Integer personId, Integer bookId, ZonedDateTime createdAt) {
         this.personId = personId;
         this.bookId = bookId;
+        this.createdAt = createdAt;
     }
 
     @Override

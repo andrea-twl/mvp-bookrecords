@@ -18,16 +18,12 @@ public class BookRents {
     private Books books;
 
     @Column(nullable = false)
-    private ZonedDateTime createdAt;
-
-    @Column(nullable = false)
     private ZonedDateTime updatedAt;
 
     public BookRents(BookRentsId id, People people, Books books, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.id = id;
         this.people = people;
         this.books = books;
-        this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
@@ -53,14 +49,6 @@ public class BookRents {
 
     public void setBooks(Books books) {
         this.books = books;
-    }
-
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public ZonedDateTime getUpdatedAt() {
