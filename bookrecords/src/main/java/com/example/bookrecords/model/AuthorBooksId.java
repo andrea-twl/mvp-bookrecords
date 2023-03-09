@@ -1,18 +1,20 @@
 package com.example.bookrecords.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Objects;
 
-public class AuthorBooksPkey implements Serializable {
+@Embeddable
+public class AuthorBooksId implements Serializable {
 
+    // @Column(name = "person_id", nullable = false)
     private Integer authorId;
+
+    // @Column(name = "book_id", nullable = false)
     private Integer bookId;
 
-    public AuthorBooksPkey(Integer authorId, Integer bookId) {
+    public AuthorBooksId(Integer authorId, Integer bookId) {
         this.authorId = authorId;
         this.bookId = bookId;
     }
@@ -25,9 +27,9 @@ public class AuthorBooksPkey implements Serializable {
         if ( o == null || getClass() != o.getClass() ) {
             return false;
         }
-        AuthorBooks authorBook = (AuthorBooks) o;
-        return Objects.equals(this.authorId, authorBook.getAuthorId())
-                && Objects.equals(this.bookId, authorBook.getBookId());
+        AuthorBooksId that = (AuthorBooksId) o;
+        return Objects.equals(this.authorId, that.authorId)
+                && Objects.equals(this.bookId, that.bookId);
     }
 
     @Override

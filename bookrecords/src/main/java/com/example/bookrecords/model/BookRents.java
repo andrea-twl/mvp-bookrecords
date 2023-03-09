@@ -1,19 +1,21 @@
 package com.example.bookrecords.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.ZonedDateTime;
 
-// @Entity
+@Entity
 public class BookRents {
-    @Id
-    @Column(name = "person_id", nullable = false)
-    private Integer personId;
-    @Id
-    @Column(name = "book_id", nullable = false)
-    private Integer bookId;
+    @EmbeddedId
+    private BookRentsId id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("personId")
+    private People people;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("bookId")
+    private Books books;
 
     @Column(nullable = false)
     private ZonedDateTime createdAt;
@@ -21,37 +23,36 @@ public class BookRents {
     @Column(nullable = false)
     private ZonedDateTime updatedAt;
 
-    public BookRents(Integer personId, Integer bookId, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
-        this.personId = personId;
-        this.bookId = bookId;
+    public BookRents(BookRentsId id, People people, Books books, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
+        this.id = id;
+        this.people = people;
+        this.books = books;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public BookRents(Integer bookId, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
-        this.bookId = bookId;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+    public BookRentsId getId() {
+        return id;
     }
 
-    public BookRents(Integer bookId) {
-        this.bookId = bookId;
+    public void setId(BookRentsId id) {
+        this.id = id;
     }
 
-    public Integer getPersonId() {
-        return personId;
+    public People getPeople() {
+        return people;
     }
 
-    public void setPersonId(Integer personId) {
-        this.personId = personId;
+    public void setPeople(People people) {
+        this.people = people;
     }
 
-    public Integer getBookId() {
-        return bookId;
+    public Books getBooks() {
+        return books;
     }
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
+    public void setBooks(Books books) {
+        this.books = books;
     }
 
     public ZonedDateTime getCreatedAt() {
