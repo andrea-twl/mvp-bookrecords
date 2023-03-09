@@ -9,7 +9,6 @@ INSERT INTO authors(id, name, "created_at", "updated_at") VALUES (1, 'Neil Gaima
 INSERT INTO authors(id, name, "created_at", "updated_at") VALUES (2, 'Terry Pratchet', NOW(), NOW());
 
 INSERT INTO author_books("created_at", "updated_at", author_id, book_id) VALUES (NOW(), NOW(), 1, 1);
-INSERT INTO author_books("created_at", "updated_at", author_id, book_id) VALUES (NOW(), NOW(), 2, 1);
 INSERT INTO author_books("created_at", "updated_at", author_id, book_id) VALUES (NOW(), NOW(), 1, 5);
 INSERT INTO author_books("created_at", "updated_at", author_id, book_id) VALUES (NOW(), NOW(), 1, 6);
 INSERT INTO author_books("created_at", "updated_at", author_id, book_id) VALUES (NOW(), NOW(), 2, 2);

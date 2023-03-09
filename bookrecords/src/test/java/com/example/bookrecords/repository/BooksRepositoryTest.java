@@ -76,14 +76,12 @@ class BooksRepositoryTest {
 
     @Test
     @Sql(scripts={"classpath:test_data/oneValidBook.sql"})
-    public void getTop3ReadBook_OneBookTwoAuthors_ReturnCorrectList() {
+    public void getTop3ReadBook_OneValidBook_ReturnCorrectList() {
         // When
         List<List<Object>> result = repo.getTop3ReadBook();
 
         // Then
-        setExpected(getObjLs("Good Omens",3, "Terry Pratchet"),
-                getObjLs("Mort",2, "Terry Pratchet"),
-                getObjLs("Reaper Man",4, "Terry Pratchet"));
+        setExpected(getObjLs("Good Omens",1, "NeiL Gaiman"));
         compareNestedList(expected, result);
     }
 
