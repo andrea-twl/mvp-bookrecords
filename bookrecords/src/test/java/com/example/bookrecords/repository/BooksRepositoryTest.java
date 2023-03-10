@@ -46,7 +46,10 @@ class BooksRepositoryTest {
             List<Object> nestedExpected = expected.get(i);
             assertEquals(nestedExpected.size(), nestedResult.size());
             for (int j = 0; j < nestedExpected.size() && j < nestedResult.size(); j++) {
-                assertTrue(nestedExpected.get(j).equals(nestedResult.get(j)));
+                Object expectedBorrower = nestedExpected.get(j);
+                Object resultBorrower = nestedResult.get(j);
+                assertTrue(expectedBorrower.equals(resultBorrower)
+                        , expectedBorrower.toString() + resultBorrower.toString());
             }
         }
     }
@@ -81,7 +84,7 @@ class BooksRepositoryTest {
         List<List<Object>> result = repo.getTop3ReadBook();
 
         // Then
-        setExpected(getObjLs("Good Omens",1, "NeiL Gaiman"));
+        setExpected(getObjLs("Good Omens",1, "Neil Gaiman"));
         compareNestedList(expected, result);
     }
 

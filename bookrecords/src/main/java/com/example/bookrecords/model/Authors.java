@@ -1,6 +1,7 @@
 package com.example.bookrecords.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.time.ZonedDateTime;
 import java.util.List;
