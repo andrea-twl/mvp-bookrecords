@@ -12,8 +12,8 @@ import java.util.List;
 public interface BooksRepository extends JpaRepository<Books, Integer> {
 
     @Query(value = "SELECT b.name, b.id, a.name " +
-            "FROM books b INNER JOIN author_books ab ON b.id = ab.book_id " +
-            "INNER JOIN authors a ON ab.author_id = a.id " +
+            "FROM books b LEFT JOIN author_books ab ON b.id = ab.book_id " +
+            "LEFT JOIN authors a ON ab.author_id = a.id " +
             "INNER JOIN " +
             "(SELECT b.id, COUNT(b) AS book_count " +
             "FROM books b INNER JOIN book_rents br ON b.id = br.book_id " +

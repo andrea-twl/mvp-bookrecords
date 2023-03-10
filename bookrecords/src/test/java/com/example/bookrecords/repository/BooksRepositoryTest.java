@@ -40,16 +40,22 @@ class BooksRepositoryTest {
     }
 
     private void compareNestedList(List<List<Object>> expected, List<List<Object>> result) {
-        assertEquals(expected.size(), result.size());
+        assertEquals(expected.size(), result.size(), "Overall size");
         for (int i = 0; i < expected.size() && i < result.size(); i++) {
             List<Object> nestedResult = result.get(i);
             List<Object> nestedExpected = expected.get(i);
-            assertEquals(nestedExpected.size(), nestedResult.size());
+            assertEquals(nestedExpected.size(), nestedResult.size(), String.format("Nested list %s size", i));
             for (int j = 0; j < nestedExpected.size() && j < nestedResult.size(); j++) {
-                Object expectedBorrower = nestedExpected.get(j);
-                Object resultBorrower = nestedResult.get(j);
-                assertTrue(expectedBorrower.equals(resultBorrower)
-                        , expectedBorrower.toString() + resultBorrower.toString());
+                Object expectedObj = nestedExpected.get(j);
+                Object resultObj = nestedResult.get(j);
+                if (expectedObj == null) {
+                    assertTrue(resultObj == null, String.format("%s is null", j));
+                } else {
+                    assertTrue(expectedObj.equals(resultObj),
+                            String.format("expected %s: %s, result %s: %s",
+                                    j, expectedObj, j, resultObj));
+                }
+
             }
         }
     }
@@ -68,7 +74,7 @@ class BooksRepositoryTest {
 
     @Test
     @Sql(scripts={"classpath:test_data/emptyData.sql"})
-    public void getTop3ReadBook_NoData_ReturnCorrectList() {
+    public void getTop3ReadBook_NoData_ReturnEmptyList() {
         // When
         List<List<Object>> result = repo.getTop3ReadBook();
 
@@ -88,4 +94,38 @@ class BooksRepositoryTest {
         compareNestedList(expected, result);
     }
 
+    @Test
+    @Sql(scripts={"classpath:test_data/twoValidBooks.sql"})
+    public void getTop3ReadBook_TwoValidBook_ReturnCorrectList() {
+        // When
+        List<List<Object>> result = repo.getTop3ReadBook();
+
+        // Then
+        setExpected(getObjLs("Good Omens",1, "Neil Gaiman"),
+                getObjLs("Reaper Man",2, "Terry Pratchet"));
+        compareNestedList(expected, result);
+    }
+
+    @Test
+    @Sql(scripts={"classpath:test_data/booksWithoutBorrowers.sql"})
+    public void getTop3ReadBook_ValidBooksWithoutBorrowers_ReturnEmptyList() {
+        // When
+        List<List<Object>> result = repo.getTop3ReadBook();
+
+        // Then
+        setExpected();
+        compareNestedList(expected, result);
+    }
+
+    @Test
+    @Sql(scripts={"classpath:test_data/booksWithoutAuthor.sql"})
+    public void getTop3ReadBook_BookWithoutAuthor_ReturnListWithoutAuthor() {
+        // When
+        List<List<Object>> result = repo.getTop3ReadBook();
+
+        // Then
+        setExpected(getObjLs("Good Omens",1, null),
+                getObjLs("Reaper Man",2, null));
+        compareNestedList(expected, result);
+    }
 }
