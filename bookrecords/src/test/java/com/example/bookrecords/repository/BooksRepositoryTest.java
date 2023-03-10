@@ -69,7 +69,7 @@ class BooksRepositoryTest {
     }
 
     @Test
-    @Sql(scripts={"classpath:test_data/emptyData.sql"})
+    @Sql(scripts={"classpath:emptyData.sql"})
     public void getTop3ReadBook_NoData_ReturnEmptyList() {
         // When
         List<List<Object>> result = repo.getTop3ReadBook();
@@ -80,7 +80,7 @@ class BooksRepositoryTest {
     }
 
     @Test
-    @Sql(scripts={"classpath:test_data/oneValidBook.sql"})
+    @Sql(scripts={"classpath:oneValidBook.sql"})
     public void getTop3ReadBook_OneValidBook_ReturnCorrectList() {
         // When
         List<List<Object>> result = repo.getTop3ReadBook();
@@ -91,7 +91,7 @@ class BooksRepositoryTest {
     }
 
     @Test
-    @Sql(scripts={"classpath:test_data/twoValidBooks.sql"})
+    @Sql(scripts={"classpath:twoValidBooks.sql"})
     public void getTop3ReadBook_TwoValidBook_ReturnCorrectList() {
         // When
         List<List<Object>> result = repo.getTop3ReadBook();
@@ -103,7 +103,7 @@ class BooksRepositoryTest {
     }
 
     @Test
-    @Sql(scripts={"classpath:test_data/booksWithoutBorrowers.sql"})
+    @Sql(scripts={"classpath:booksWithoutBorrowers.sql"})
     public void getTop3ReadBook_ValidBooksWithoutBorrowers_ReturnEmptyList() {
         // When
         List<List<Object>> result = repo.getTop3ReadBook();
@@ -114,7 +114,7 @@ class BooksRepositoryTest {
     }
 
     @Test
-    @Sql(scripts={"classpath:test_data/booksWithoutAuthor.sql"})
+    @Sql(scripts={"classpath:booksWithoutAuthor.sql"})
     public void getTop3ReadBook_BookWithoutAuthor_ReturnListWithoutAuthor() {
         // When
         List<List<Object>> result = repo.getTop3ReadBook();
