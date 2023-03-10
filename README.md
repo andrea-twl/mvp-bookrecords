@@ -16,7 +16,9 @@ the book records.
 - For each book, the Top 3 people with the most amount of that book rented in a specific country. (Specified countries using country codes SG , MY , US)
 
 This means that the 3 books will not change as the country code changes,
-only the borrowers associated with each book.
+only the borrowers associated with each book. I've added another service method to allow the top 3 people to be selected by
+country instead, as the original specification implied. The line has been commented out in the controller method, but can be
+uncommented if that fits the behaviour intended better.
 
 2. GET /getRandomCountry - returns a random country and its code to be used in the above API call
 
